@@ -1,33 +1,26 @@
-pipeline{
-	agent{
-		label 'Assignment'
-	}
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "4.52.0"
+    }
+  }
+}
 
-	environment{
-		AWS_ACCESS_KEY = credentials('ACCESS_KEY')
-		AWS_SECRET_KEY = credentials('SECRET_KEY')
-	}
+terraform {
+  required_version = ">=0.13"
+}
 
-	tools{
-		terraform 'terraform'
-	}
+provider "aws" {
+  region     = "us-east-1"
+  access_key = "14d886a4-624f-4884-81aa-0835c6f8e437"
+  secret_key = "1811d972-912b-4f5d-b451-49044a08e7af"
+}
 
-	stages{
-		stage ('fetch-latest-code'){
-			steps{
-				checkout ([$class:'GitSCM',branches:[[name: '*/main']],extensions: [],userRemoteConfigs: [[url: 'https://github.com/KevalMarmik/class.git']]])
-			}
-		}
-		stage ('TF INIT & PLAN'){
-			steps{
-				sh 'terraform init'
-				sh 'terraform plan'
-			}
-		}
-		stage ('TF APPLY'){
-			steps{
-				sh 'terraform apply --auto-approve'
-			}
-		}
-	}
+resource "aws_instance" "myec2" {
+   ami = "ami-0bef6cc322bfff646"
+   instance_type = "t2.micro"
+   key_name = "key"
+   
+
 }
