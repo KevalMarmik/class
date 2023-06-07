@@ -6,10 +6,6 @@ pipeline{
 		AWS_SECRET_KEY = credentials('1811d972-912b-4f5d-b451-49044a08e7af')
 	}
 
-	tools{
-		terraform 'Terraform'
-	}
-
 	stages{
 		stage ('fetch-latest-code'){
 			steps{
