@@ -2,8 +2,8 @@ pipeline{
 	agent any
 
 	environment{
-		AWS_ACCESS_KEY = credentials('ACCESS_KEY')
-		AWS_SECRET_KEY = credentials('SECRET_KEY')
+		AWS_ACCESS_KEY = credentials('14d886a4-624f-4884-81aa-0835c6f8e437')
+		AWS_SECRET_KEY = credentials('1811d972-912b-4f5d-b451-49044a08e7af')
 	}
 
 	tools{
