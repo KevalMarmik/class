@@ -1,5 +1,7 @@
 pipeline{
-	agent any
+	agent{
+		label 'Assignment'
+	}
 
 	environment{
 		AWS_ACCESS_KEY = credentials('ACCESS_KEY')
