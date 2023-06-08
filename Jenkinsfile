@@ -4,7 +4,8 @@ pipeline{
 	stages{
 		stage ('fetch-latest-code'){
 			steps{
-				git branch: 'main', url: 'https://github.com/KevalMarmik/class.git/'
+				git https://github.com/KevalMarmik/class.git
+				//git branch: 'main', url: 'https://github.com/KevalMarmik/class.git/'
 			}
 		}
 		stage ('TF INIT & PLAN'){
