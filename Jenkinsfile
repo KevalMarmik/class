@@ -19,7 +19,7 @@ pipeline{
 		
 		stage ('TF INIT'){
 			steps{
-				withCredentials([string(credentialsId: '14d886a4-624f-4884-81aa-0835c6f8e437', variable: 'AWS_ACCESS_KEY_ID'),
+				withCredentials([string(credentialsId: '14d886a4-624f-4884-81aa-0835c6f8e437', variable: 'AWS_ACCESS_KEY'),
                                  string(credentialsId: '1811d972-912b-4f5d-b451-49044a08e7af', variable: 'AWS_SECRET_KEY')]) {
 					sh 'terraform init'
 				}
@@ -27,7 +27,7 @@ pipeline{
 		}
 		stage ('TF PLAN'){
 			steps{
-				withCredentials([string(credentialsId: '14d886a4-624f-4884-81aa-0835c6f8e437', variable: 'AWS_ACCESS_KEY_ID'),
+				withCredentials([string(credentialsId: '14d886a4-624f-4884-81aa-0835c6f8e437', variable: 'AWS_ACCESS_KEY'),
                                  string(credentialsId: '1811d972-912b-4f5d-b451-49044a08e7af', variable: 'AWS_SECRET_KEY')]) {
 					sh 'terraform plan'
 				}
