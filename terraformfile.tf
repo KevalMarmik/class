@@ -11,13 +11,17 @@ terraform {
   required_version = ">=0.13"
 }
 
+withCredentials([usernamePassword(credentialsId: '14d886a4-624f-4884-81aa-0835c6f8e437', passwordVariable: '', usernameVariable: 'access_key')]) {
+    use 'sh $access_key'
+}
+withCredentials([usernamePassword(credentialsId: '1811d972-912b-4f5d-b451-49044a08e7af', passwordVariable: '', usernameVariable: 'secret_key')]) {
+    use 'sh $secret_key'
+}
 provider "aws" {
   region     = "us-east-1"
-  access_key =withCredentials([usernamePassword(credentialsId: '14d886a4-624f-4884-81aa-0835c6f8e437', passwordVariable: '', usernameVariable: '')]) {
-    // some block}
+  access_key = $access_key
   
-  secret_key = withCredentials([usernamePassword(credentialsId: '1811d972-912b-4f5d-b451-49044a08e7af', passwordVariable: '', usernameVariable: '')]) {
-    // some block}
+  secret_key = $access_key
   
  // access_key = ["${AWS_ACEESS_KEY}"]
  // secret_key = ["${AWS_SECRET_KEY}"]
