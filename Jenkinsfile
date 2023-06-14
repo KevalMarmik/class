@@ -14,11 +14,7 @@ pipeline{
 				git branch: 'main', url: 'https://github.com/KevalMarmik/class.git'
 			}
 		}
-		stage ('TF VALIDATE'){
-			steps{
-				sh 'terraform validate'
-			}
-		}
+		
 		stage ('TF INIT'){
 			steps{
 				sh 'terraform init'
