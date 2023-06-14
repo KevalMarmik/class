@@ -1,12 +1,11 @@
 pipeline{
-	agent any
-
-// 	environment {
-//        AWS_ACCESS_KEY     = credentials('ACCESS_ID')
-//        AWS_SECRET_KEY = credentials('ACCESS_KEY')
+	environment {
+		AWS_ACCESS_KEY     = credentials('AWS_ACCESS_KEY')
+		AWS_SECRET_KEY = credentials('AWS_SECRET_KEY')
     
-// 	}
+	}
 	
+	agent any
 	stages{
 		stage ('fetch-latest-code'){
 			steps{
