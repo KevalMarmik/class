@@ -1,10 +1,10 @@
 pipeline{
 	
 	agent any
-	environment {
-       AWS_ACCESS_KEY_ID     = credentials('e65eb390-51bf-4a69-99d0-aacebe542205')
-       AWS_SECRET_ACCESS_KEY = credentials('78e6e26e-e2b5-45cb-9e69-0865064e67db')
-    }
+// 	environment {
+//        AWS_ACCESS_KEY_ID     = credentials('e65eb390-51bf-4a69-99d0-aacebe542205')
+//        AWS_SECRET_ACCESS_KEY = credentials('78e6e26e-e2b5-45cb-9e69-0865064e67db')
+//     }
 	stages{
 		stage ('fetch-latest-code'){
 			steps{
@@ -22,8 +22,10 @@ pipeline{
 		}
 		stage ('TF PLAN'){
 			steps{
-				
+				withCredentials([string(credentialsId: '94237946-e563-4a2f-884e-2f0039fe4f4c', variable: ''),
+						string(credentialsId: '6b10d1f9-d0a8-44fb-8250-21a91c9c9123', variable: '')]) {
 					sh 'terraform plan'
+				}
 				
 				
 			}
