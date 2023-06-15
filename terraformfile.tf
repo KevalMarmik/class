@@ -14,8 +14,7 @@ terraform {
 
 provider "aws" {
   region     = "us-east-1"
-#    access_key = "AWS_ACCESS_KEY"
-#    secret_key = "AWS_SECRET_KEY"
+
 }
 resource "aws_instance" "myec2" {
    ami = "ami-0bef6cc322bfff646"
